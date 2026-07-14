@@ -1,0 +1,47 @@
+{
+  "contact": {
+    "name": "Mrinmoy Halder",
+    "phone": "+91-8583853565",
+    "email": "mrinmoyh64@gmail.com",
+    "linkedin_label": "LinkedIn: Mrinmoy-H",
+    "linkedin_url": "https://www.linkedin.com/in/Mrinmoy-H",
+    "github_label": "GitHub",
+    "github_url": "https://github.com/"
+  },
+  "summary": "Generative AI Engineer and Technical Lead with hands-on experience designing, developing, and deploying LLM-powered applications, RAG pipelines, and multi-agent (Agentic AI) systems in Python. Strong in LangChain and LangGraph, Prompt Engineering, vector databases, model fine-tuning, and RLHF (PPO/DPO), with proven REST API integration and deployment via FastAPI.",
+  "education": [
+    {"institution": "Indian Institute of Technology, Delhi", "location": "Delhi", "dates": "Aug 2021 - Jun 2023", "degree": "Master of Technology (M.tech) in Computer Technology"},
+    {"institution": "University Institute of Technology, University of Burdwan", "location": "Burdwan", "dates": "Aug 2014 - Jul 2018", "degree": "Bachelor of Engineering (B.E) in Computer Science and Engineering"}
+  ],
+  "experience": [
+    {
+      "title": "Technical Lead",
+      "org": "HCL-Tech, Bengaluru",
+      "dates": "Jul 2023 -- Present",
+      "subtitle": "Generative AI, RAG, Agentic AI & LLM Fine-tuning",
+      "groups": [
+        {"heading": "RAG & LLM Applications", "bullets": [
+          "Designed, developed, and deployed end-to-end RAG pipelines using LangChain, integrating all-mpnet-base-v2 embeddings, ChromaDB/FAISS vector databases, and Mistral-7B-Instruct for grounded response generation.",
+          "Benchmarked multiple LLMs on latency, BLEU, and ROUGE to drive prompt optimization and response evaluation, improving retrieval quality & answer faithfulness.",
+          "Built a production chatbot / AI assistant using Cohere models and Gradio, applying Prompt Engineering to achieve superior accuracy and efficiency."
+        ]},
+        {"heading": "LLM Fine-tuning", "bullets": [
+          "Fine-tuned LLMs (CodeLlama, CodeT5-220M) to predict taint propagation and sink vulnerabilities from Java method signatures.",
+          "Achieved a 25% accuracy improvement in taint prediction (CodeLlama) and 15% in sink-vulnerability detection (CodeT5-220M); benchmarked against CatBoost."
+        ]},
+        {"heading": "Agentic AI & Multi-Agent Systems", "bullets": [
+          "Developed a multi-agent (Agentic AI) solution generating requirements documents (URS, SRS) in real time, built on LangGraph's Multi-Agent Supervisor architecture with inter-agent communication, error handling, and loop control."
+        ]}
+      ]
+    }
+  ],
+  "skills": [
+    {"name": "Programming Languages", "items": ["Python", "C", "C++", "SQL"]},
+    {"name": "Generative AI & LLMs", "items": ["RAG", "Prompt Engineering", "LLM Fine-tuning", "RLHF (PPO & DPO)", "Agentic AI", "Multi-Agent Systems", "AI Agents", "NLP", "MCP"]},
+    {"name": "LLMs & Models", "items": ["OpenAI GPT-4", "Claude", "Gemini", "Mistral", "Cohere", "CodeLlama", "CodeT5"]},
+    {"name": "Frameworks & Libraries", "items": ["LangChain", "LangGraph", "Transformers", "TRL", "PyTorch", "scikit-learn", "FastAPI", "SQLAlchemy", "Streamlit", "Gradio"]},
+    {"name": "Vector Databases", "items": ["ChromaDB", "FAISS"]},
+    {"name": "API & Deployment", "items": ["REST API Development & Deployment", "FastAPI", "Docker", "Git", "MariaDB"]}
+  ],
+  "bold_keywords": ["RAG", "LangChain", "LangGraph", "Prompt Engineering", "Agentic AI", "FAISS", "ChromaDB", "REST API", "FastAPI", "RLHF", "CodeLlama"]
+}

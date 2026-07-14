@@ -1,0 +1,104 @@
+%# ============================================================
+   template.tex.j2  — rendered by render.py
+   Delimiters are REMAPPED so they never clash with LaTeX:
+     VAR    -> a variable          (Jinja default was {{ }})
+     BLOCK  -> control flow        (Jinja default was {% %})
+     comment delimiters are this very block
+   Every piece of user content is piped through |latex (escape) or
+   |emph (escape + bold the keyword list). Agents emit PLAIN TEXT only.
+============================================================ #%
+\documentclass[letterpaper,11pt]{article}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}\fancyhf{}\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0pt}
+\addtolength{\oddsidemargin}{-0.5in}\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.7in}\addtolength{\textheight}{1.5in}
+\urlstyle{same}\raggedbottom\raggedright\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{\vspace{-4pt}\scshape\raggedright\large}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{\item\small{{#1 \vspace{-2pt}}}}
+\newcommand{\resumeSubheading}[4]{\vspace{-2pt}\item
+  \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\ \textit{\small#3} & \textit{\small #4} \\
+  \end{tabular*}\vspace{-7pt}}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-6pt}}
+\newcommand{\resumeGroup}[1]{\vspace{1pt}\item\small\textbf{#1}\vspace{-5pt}}
+
+\begin{document}
+
+%# ---------- HEADING ---------- #%
+\begin{center}
+    \textbf{\Huge \scshape \VAR{contact.name|latex}} \\ \vspace{1pt}
+    \small
+    \BLOCK{set sep = joiner(" $|$ ")}
+    \BLOCK{if contact.phone}\VAR{sep()}\VAR{contact.phone|latex}\BLOCK{endif}
+    \BLOCK{if contact.email}\VAR{sep()}\href{mailto:\VAR{contact.email}}{\underline{\VAR{contact.email|latex}}}\BLOCK{endif}
+    \BLOCK{if contact.linkedin_label}\VAR{sep()}\href{\VAR{contact.linkedin_url}}{\underline{\VAR{contact.linkedin_label|latex}}}\BLOCK{endif}
+    \BLOCK{if contact.github_label}\VAR{sep()}\href{\VAR{contact.github_url}}{\underline{\VAR{contact.github_label|latex}}}\BLOCK{endif}
+\end{center}
+
+%# ---------- SUMMARY ---------- #%
+\BLOCK{if summary}
+\section{Summary}
+\small{\VAR{summary|emph}}
+\vspace{-4pt}
+\BLOCK{endif}
+
+%# ---------- EDUCATION ---------- #%
+\BLOCK{if education}
+\section{Education}
+  \resumeSubHeadingListStart
+  \BLOCK{for ed in education}
+    \resumeSubheading{\VAR{ed.institution|latex}}{\VAR{ed.dates|latex}, \VAR{ed.location|latex}}{\VAR{ed.degree|latex}}{}
+  \BLOCK{endfor}
+  \resumeSubHeadingListEnd
+\BLOCK{endif}
+
+%# ---------- EXPERIENCE ---------- #%
+\BLOCK{if experience}
+\section{Experience}
+  \resumeSubHeadingListStart
+  \BLOCK{for role in experience}
+    \resumeSubheading{\VAR{role.title|latex}, (\VAR{role.org|latex})}{\VAR{role.dates|latex}}{\VAR{role.subtitle|latex if role.subtitle else ""}}{}
+    \BLOCK{for g in role.groups}
+      \BLOCK{if g.heading}\resumeGroup{\VAR{g.heading|latex}}\BLOCK{endif}
+      \resumeItemListStart
+      \BLOCK{for b in g.bullets}
+        \resumeItem{\VAR{b|emph}}
+      \BLOCK{endfor}
+      \resumeItemListEnd
+    \BLOCK{endfor}
+  \BLOCK{endfor}
+  \resumeSubHeadingListEnd
+\BLOCK{endif}
+
+%# ---------- TECHNICAL SKILLS ---------- #%
+\BLOCK{if skills}
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+    \BLOCK{for cat in skills}
+     \textbf{\VAR{cat.name|latex}}{: \VAR{cat.items|join(", ")|latex}} \BLOCK{if not loop.last}\\ \vspace{2pt}\BLOCK{endif}
+    \BLOCK{endfor}
+    }}
+ \end{itemize}
+\BLOCK{endif}
+
+\end{document}

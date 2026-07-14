@@ -1,0 +1,9 @@
+**/__pycache__/
+**/*.pyc
+.git
+src/.env.example
+src/.env
+uploaded_files/
+*.pdf
+src/backend/tests/
+src/backend/tailored_resume.pdf
