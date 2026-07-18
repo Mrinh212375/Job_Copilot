@@ -219,4 +219,4 @@ __marimo__/
 
 *.pdf
 
-src\backend\tests
+src/backend/tests/
